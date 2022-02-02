@@ -60,6 +60,7 @@ require (
 	github.com/pelletier/go-toml v1.9.4 // indirect
 	github.com/pierrec/lz4 v2.6.1+incompatible // indirect
 	github.com/rhnvrm/simples3 v0.8.1 // indirect
+	github.com/rs/xid v1.3.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
 	github.com/snowzach/queryp v0.3.4 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
