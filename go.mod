@@ -23,6 +23,7 @@ require (
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-chi/chi v1.5.4 // indirect
+	github.com/go-chi/cors v1.2.0 // indirect
 	github.com/golang-migrate/migrate/v4 v4.15.1 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
@@ -62,6 +63,7 @@ require (
 	github.com/rhnvrm/simples3 v0.8.1 // indirect
 	github.com/rs/xid v1.3.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
+	github.com/snowzach/certtools v1.0.2 // indirect
 	github.com/snowzach/queryp v0.3.4 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
