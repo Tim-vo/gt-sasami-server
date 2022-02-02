@@ -22,6 +22,7 @@ require (
 	github.com/fatih/color v1.13.0 // indirect
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
+	github.com/golang-migrate/migrate/v4 v4.15.1 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
@@ -43,6 +44,7 @@ require (
 	github.com/hashicorp/vault/api v1.3.1 // indirect
 	github.com/hashicorp/vault/sdk v0.3.0 // indirect
 	github.com/hashicorp/yamux v0.0.0-20211028200310-0bc27b27de87 // indirect
+	github.com/johejo/golang-migrate-extra v0.0.0-20211005021153-c17dd75f8b4a // indirect
 	github.com/joho/godotenv v1.4.0 // indirect
 	github.com/knadh/koanf v1.4.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
