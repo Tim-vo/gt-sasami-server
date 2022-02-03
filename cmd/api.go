@@ -48,9 +48,9 @@ var (
 				logger.Fatalw("could not setup thingrpc", "error", err)
 			}
 
-			// Serve api-docs and swagger-ui
+			// Serve apidocs and swagger-ui
 			docsFileServer := http.FileServer(http.FS(embed.PublicHTMLFS()))
-			s.Router().Mount("/api-docs", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			s.Router().Mount("/apidocs", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 				w.Header().Set("vary", "Accept-Encoding")
 				w.Header().Set("cache-Control", "no-cache")
 				docsFileServer.ServeHTTP(w, r)
