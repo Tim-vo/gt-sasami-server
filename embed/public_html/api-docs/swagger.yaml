@@ -1,66 +1,19 @@
 basePath: /api/v1
 definitions:
-  gorestapi.Thing:
+  gtsasamiserver.Account:
     properties:
       created:
-        description: Created Timestamp
         type: string
-      description:
-        description: Description
+      email:
         type: string
       id:
-        description: ID (Auto-Generated)
+        description: ID (Auto generated)
         type: string
-      name:
-        description: Name
-        type: string
-      updated:
-        description: Updated Timestamp
-        type: string
-    type: object
-  gorestapi.ThingExample:
-    properties:
-      description:
-        description: Description
-        type: string
-      name:
-        description: Name
-        type: string
-    type: object
-  gorestapi.Widget:
-    properties:
-      created:
-        description: Created Timestamp
-        type: string
-      description:
-        description: Description
-        type: string
-      id:
-        description: ID (Auto-Generated)
-        type: string
-      name:
-        description: Name
-        type: string
-      thing:
-        $ref: '#/definitions/gorestapi.Thing'
-        description: Loaded Structs
-      thing_id:
-        description: ThingID
+      password:
         type: string
       updated:
-        description: Updated Timestamp
         type: string
-    type: object
-  gorestapi.WidgetExample:
-    properties:
-      description:
-        description: Description
-        type: string
-      name:
-        description: Name
-        type: string
-      thing_id:
-        description: ThingID
+      username:
         type: string
     type: object
   server.ErrResponse:
@@ -86,10 +39,10 @@ info:
   title: Swagger Example API
   version: "1.0"
 paths:
-  /things:
+  /accounts:
     get:
-      description: Find things
-      operationId: ThingsFind
+      description: Find accounts
+      operationId: AccountsFind
       parameters:
       - description: id
         in: query
@@ -120,7 +73,7 @@ paths:
           description: OK
           schema:
             items:
-              $ref: '#/definitions/gorestapi.Thing'
+              $ref: '#/definitions/gtsasamiserver.Account'
             type: array
         "400":
           description: Invalid Argument
@@ -130,24 +83,24 @@ paths:
           description: Internal Error
           schema:
             $ref: '#/definitions/server.ErrResponse'
-      summary: Find things
+      summary: Find accounts
       tags:
-      - things
+      - accounts
     post:
-      description: Save a thing
-      operationId: ThingSave
+      description: Save a account
+      operationId: AccountSave
       parameters:
-      - description: Thing
+      - description: Account
         in: body
-        name: thing
+        name: account
         required: true
         schema:
-          $ref: '#/definitions/gorestapi.ThingExample'
+          $ref: '#/definitions/gtsasamiserver.Account'
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/gorestapi.Thing'
+            $ref: '#/definitions/gtsasamiserver.Account'
         "400":
           description: Invalid Argument
           schema:
@@ -156,13 +109,13 @@ paths:
           description: Internal Error
           schema:
             $ref: '#/definitions/server.ErrResponse'
-      summary: Save thing
+      summary: Save account
       tags:
-      - things
-  /things/{id}:
+      - accounts
+  /accounts/{id}:
     delete:
-      description: Delete a thing
-      operationId: ThingDeleteByID
+      description: Delete a account
+      operationId: AccountDeleteByID
       parameters:
       - description: ID
         in: path
@@ -184,12 +137,12 @@ paths:
           description: Internal Error
           schema:
             $ref: '#/definitions/server.ErrResponse'
-      summary: Delete thing
+      summary: Delete account
       tags:
-      - things
+      - accounts
     get:
-      description: Get a thing
-      operationId: ThingGetByID
+      description: Get a account
+      operationId: AccountGetByID
       parameters:
       - description: ID
         in: path
@@ -200,7 +153,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/gorestapi.Thing'
+            $ref: '#/definitions/gtsasamiserver.Account'
         "400":
           description: Invalid Argument
           schema:
@@ -213,139 +166,9 @@ paths:
           description: Internal Error
           schema:
             $ref: '#/definitions/server.ErrResponse'
-      summary: Get thing
+      summary: Get account
       tags:
-      - things
-  /widgets:
-    get:
-      description: Find widgets
-      operationId: WidgetsFind
-      parameters:
-      - description: id
-        in: query
-        name: id
-        type: string
-      - description: name
-        in: query
-        name: name
-        type: string
-      - description: description
-        in: query
-        name: description
-        type: string
-      - description: offset
-        in: query
-        name: offset
-        type: integer
-      - description: limit
-        in: query
-        name: limit
-        type: integer
-      - description: query
-        in: query
-        name: sort
-        type: string
-      responses:
-        "200":
-          description: OK
-          schema:
-            items:
-              $ref: '#/definitions/gorestapi.Widget'
-            type: array
-        "400":
-          description: Invalid Argument
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-        "500":
-          description: Internal Error
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-      summary: Find widgets
-      tags:
-      - widgets
-    post:
-      description: Save a widget
-      operationId: WidgetSave
-      parameters:
-      - description: Widget
-        in: body
-        name: widget
-        required: true
-        schema:
-          $ref: '#/definitions/gorestapi.WidgetExample'
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/gorestapi.Widget'
-        "400":
-          description: Invalid Argument
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-        "500":
-          description: Internal Error
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-      summary: Save widget
-      tags:
-      - widgets
-  /widgets/{id}:
-    delete:
-      description: Delete a widget
-      operationId: WidgetDeleteByID
-      parameters:
-      - description: ID
-        in: path
-        name: id
-        required: true
-        type: string
-      responses:
-        "204":
-          description: Success
-        "400":
-          description: Invalid Argument
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-        "500":
-          description: Internal Error
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-      summary: Delete widget
-      tags:
-      - widgets
-    get:
-      description: Get a widget
-      operationId: WidgetGetByID
-      parameters:
-      - description: ID
-        in: path
-        name: id
-        required: true
-        type: string
-      responses:
-        "200":
-          description: OK
-          schema:
-            $ref: '#/definitions/gorestapi.Widget'
-        "400":
-          description: Invalid Argument
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-        "500":
-          description: Internal Error
-          schema:
-            $ref: '#/definitions/server.ErrResponse'
-      summary: Get widget
-      tags:
-      - widgets
+      - accounts
 securityDefinitions:
   ApiKeyAuth:
     in: header
@@ -361,7 +184,6 @@ securityDefinitions:
     tokenUrl: https://example.com/oauth/token
     type: oauth2
   OAuth2Application:
-    authorizationUrl: ""
     flow: application
     scopes:
       admin: ' Grants read and write access to administrative information'
@@ -376,7 +198,6 @@ securityDefinitions:
       write: ' Grants write access'
     type: oauth2
   OAuth2Password:
-    authorizationUrl: ""
     flow: password
     scopes:
       admin: ' Grants read and write access to administrative information'

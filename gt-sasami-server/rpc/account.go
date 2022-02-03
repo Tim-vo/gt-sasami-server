@@ -17,8 +17,8 @@ import (
 // @Tags accounts
 // @Summary Save account
 // @Description Save a account
-// @Param account body gt-sasami-server.AccountExample true "Account"
-// @Success 200 {object} gt-sasami-server.Account
+// @Param account body gtSasamiServer.Account true "Account"
+// @Success 200 {object} gtSasamiServer.Account
 // @Failure 400 {object} server.ErrResponse "Invalid Argument"
 // @Failure 500 {object} server.ErrResponse "Internal Error"
 // @Router /accounts [post]
@@ -57,7 +57,7 @@ func (s *Server) AccountSave() http.HandlerFunc {
 // @Summary Get account
 // @Description Get a account
 // @Param id path string true "ID"
-// @Success 200 {object} gorestapi.Account
+// @Success 200 {object} gtSasamiServer.Account
 // @Failure 400 {object} server.ErrResponse "Invalid Argument"
 // @Failure 404 {object} server.ErrResponse "Not Found"
 // @Failure 500 {object} server.ErrResponse "Internal Error"
@@ -137,7 +137,7 @@ func (s *Server) AccountDeleteByID() http.HandlerFunc {
 // @Param offset query int false "offset"
 // @Param limit query int false "limit"
 // @Param sort query string false "query"
-// @Success 200 {array} gorestapi.Account
+// @Success 200 {array} gtSasamiServer.Account
 // @Failure 400 {object} server.ErrResponse "Invalid Argument"
 // @Failure 500 {object} server.ErrResponse "Internal Error"
 // @Router /accounts [get]
