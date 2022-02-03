@@ -20,19 +20,19 @@ ${GOPATH}/bin/swag:
 
 .PHONY: swagger
 swagger: tools ${SWAGGERSOURCE}
-	swag init --dir . --generalInfo gt-sasami-server/swagger.go --exclude embed --output embed/public_html/api-docs
-	rm embed/public_html/api-docs/docs.go
+	swag init --dir . --generalInfo gt-sasami-server/swagger.go --exclude embed --output embed/public_html/apidocs
+	rm embed/public_html/apidocs/docs.go
 
-embed/public_html/api-docs/swagger.json: tools ${SWAGGERSOURCE}
-	swag init --dir . --generalInfo gt-sasami-server/swagger.go --exclude embed --output embed/public_html/api-docs
-	rm embed/public_html/api-docs/docs.go
+embed/public_html/apidocs/swagger.json: tools ${SWAGGERSOURCE}
+	swag init --dir . --generalInfo gt-sasami-server/swagger.go --exclude embed --output embed/public_html/apidocs
+	rm embed/public_html/apidocs/docs.go
 
 .PHONY: mocks
 mocks: tools
 	mockery -dir ./gt-sasami-server -name GTStore
 
 .PHONY: ${EXECUTABLE}
-${EXECUTABLE}: tools embed/public_html/api-docs/swagger.json
+${EXECUTABLE}: tools embed/public_html/apidocs/swagger.json
 	# Compiling...
 	go build -ldflags "-X ${PACKAGENAME}/conf.Executable=${EXECUTABLE} -X ${PACKAGENAME}/conf.GitVersion=${GITVERSION}" -o ${EXECUTABLE}
 
