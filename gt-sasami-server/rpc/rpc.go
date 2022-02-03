@@ -10,10 +10,10 @@ import (
 type Server struct {
 	logger  *zap.SugaredLogger
 	router  chi.Router
-	grStore gtsasamiserver.GRStore
+	grStore gtsasamiserver.GTStore
 }
 
-func Setup(router chi.Router, grStore gtsasamiserver.GRStore) error {
+func Setup(router chi.Router, grStore gtsasamiserver.GTStore) error {
 
 	s := &Server{
 		logger:  zap.S().With("package", "thingrpc"),
