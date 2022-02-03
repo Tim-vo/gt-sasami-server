@@ -1,4 +1,4 @@
-EXECUTABLE := gt-sasami-servercmd
+EXECUTABLE := gt-sasami-server.exe
 GITVERSION := $(shell git describe --dirty --always --tags --long)
 GOPATH ?= ${HOME}/go
 PACKAGENAME := $(shell go list -m -f '{{.Path}}')
