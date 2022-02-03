@@ -15,15 +15,18 @@ type Server struct {
 
 func Setup(router chi.Router, grStore gtsasamiserver.GTStore) error {
 
-	s := &Server{
-		logger:  zap.S().With("package", "thingrpc"),
+	server := &Server{
+		logger:  zap.S().With("package", "accountrpc"),
 		router:  router,
 		grStore: grStore,
 	}
 
 	// Base Functions
-	s.router.Route("/api", func(r chi.Router) {
-
+	server.router.Route("/api", func(router chi.Router) {
+		router.Post("/accounts", server.AccountSave())
+		router.Get("/accounts/{id}", server.AccountGetByID())
+		router.Delete("/accounts/{id}", server.AccountDeleteByID())
+		router.Get("/accounts", server.AccountsFind())
 	})
 
 	return nil
