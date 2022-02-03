@@ -24,28 +24,28 @@ import (
 // @Router /accounts [post]
 func (s *Server) AccountSave() http.HandlerFunc {
 
-	return func(w http.ResponseWriter, r *http.Request) {
+	return func(writer http.ResponseWriter, request *http.Request) {
 
-		ctx := r.Context()
+		ctx := request.Context()
 
 		var account = new(gtSasamiServer.Account)
-		if err := server.DecodeJSON(r.Body, account); err != nil {
-			server.RenderErrInvalidRequest(w, err)
+		if err := server.DecodeJSON(request.Body, account); err != nil {
+			server.RenderErrInvalidRequest(writer, err)
 			return
 		}
 
 		err := s.grStore.AccountSave(ctx, account)
 		if err != nil {
 			if serr, ok := err.(*store.Error); ok {
-				server.RenderErrInvalidRequest(w, serr.ErrorForOp(store.ErrorOpSave))
+				server.RenderErrInvalidRequest(writer, serr.ErrorForOp(store.ErrorOpSave))
 			} else {
-				errID := server.RenderErrInternalWithID(w, nil)
+				errID := server.RenderErrInternalWithID(writer, nil)
 				s.logger.Errorw("AccountSave error", "error", err, "error_id", errID)
 			}
 			return
 		}
 
-		server.RenderJSON(w, http.StatusOK, account)
+		server.RenderJSON(writer, http.StatusOK, account)
 	}
 
 }
