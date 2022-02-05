@@ -1,0 +1,12 @@
+{
+  "name": "Guardian Tales - Sasami Guild Server",
+  "description": "server",
+  "keywords": [
+    "getting-started",
+    "go",
+    "sample",
+    "example"
+  ],
+  "website": "http://github.com/Tim-vo/gt-sasami-server/",
+  "repository": "http://github.com/Tim-vo/gt-sasami-server/"
+}
